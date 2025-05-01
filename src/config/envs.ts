@@ -7,6 +7,7 @@ interface EnvsVars{
     STRIPE_SECRET_KEY: string;
     URL_SUCCESS: string;
     URL_CANCELLED: string;
+    END_POINT_SECRET: string;
 }
 
 
@@ -15,6 +16,7 @@ const envsSchema = joi.object({
     STRIPE_SECRET_KEY: joi.string().required(),
     URL_SUCCESS: joi.string().uri().required(),
     URL_CANCELLED: joi.string().uri().required(),
+    END_POINT_SECRET: joi.string().required(),
 }).unknown(true);
 
 
@@ -31,4 +33,5 @@ export const envs ={
     stripeSecretKey: envVar.STRIPE_SECRET_KEY,
     frontendUrl: envVar.URL_SUCCESS,
     backendUrl: envVar.URL_CANCELLED,
+    endPointSecret: envVar.END_POINT_SECRET,
 }

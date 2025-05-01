@@ -48,15 +48,15 @@ export class PaymentsService {
 
     async handleWebhook(req: Request, res: Response) {
         const signature = req.headers['stripe-signature'];
-        //const endPintSecret = 'whsec_75f32aedbe35a4b689f4d0738ca91b00ebfc13e0fe4e65713bc7913f19489f9a'
-        const endPintSecret = 'whsec_Dwc9pAPnc8peO6ZL5MKMqqjFgWvVt7rM';
+       
+        const endPointSecret = envs.endPointSecret;
         let event: Stripe.Event;
 
         try {
             event = this.stripe.webhooks.constructEvent(
                 req['rawBody'],
                 signature!,
-                endPintSecret
+                endPointSecret
             );
         } catch (error) {
             console.log('Error while verifying webhook signature: ', error);
